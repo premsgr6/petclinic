@@ -1,6 +1,14 @@
 pipeline {
 	agent any
     stages {
+	     stage('SCM') {
+            steps {
+                script {
+                    git credentialsId: 'GIT-PASSWD', url: 'https://github.com/premsgr6/petclinic.git'
+                }
+            }
+        }
+	    
         stage('Build on k8 ') {
             steps {           
                         sh 'pwd'
